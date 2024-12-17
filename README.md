@@ -1,4 +1,4 @@
-#VLAGen: Automated Data Collection for Generalizing Robotic Policies
+# VLAGen: Automated Data Collection for Generalizing Robotic Policies
 
 This repo is forked from OpenVLA and contains code from https://github.com/DelinQu/SimplerEnv-OpenVLA. 
 
