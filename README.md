@@ -1,36 +1,34 @@
-# OpenVLA: An Open-Source Vision-Language-Action Model
+#VLAGen: Automated Data Collection for Generalizing Robotic Policies
 
-[![arXiv](https://img.shields.io/badge/arXiv-2406.09246-df2a2a.svg?style=for-the-badge)](https://arxiv.org/abs/2406.09246)
-[![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-Models-yellow?style=for-the-badge)](https://huggingface.co/openvla/openvla-7b)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.2.0-EE4C2C.svg?style=for-the-badge&logo=pytorch)](https://pytorch.org/get-started/locally/)
-[![Python](https://img.shields.io/badge/python-3.10-blue?style=for-the-badge)](https://www.python.org)
-[![License](https://img.shields.io/github/license/TRI-ML/prismatic-vlms?style=for-the-badge)](LICENSE)
+This repo is forked from OpenVLA and contains code from https://github.com/DelinQu/SimplerEnv-OpenVLA. 
+
+Use the bash scripts in scripts_run_eval to generate training data. (pass in --policy-model openvla_generate_data).
+
+For setup, clone the repo.
+
+Install ManiSkill2 real-to-sim environments and their dependencies:
+
+```bash
+
+cd {this_repo}/ManiSkill2_real2sim
+pip install -e .
+```
+
+Install the requirements for OpenVLA (below).
+
+Please specify a OpenAI token if data generation is turned on (for reward assignment. 
+
+Remember to follow the OpenVLA instructions below for instructions on adding datasets
+
+
+## OpenVLA: An Open-Source Vision-Language-Action Model
+
  
 [**Getting Started**](#getting-started) | [**Pretrained VLAs**](#pretrained-vlas) | [**Installation**](#installation) | [**Fine-Tuning OpenVLA via LoRA**](#fine-tuning-openvla-via-lora) | [**Fully Fine-Tuning OpenVLA**](#fully-fine-tuning-openvla) |
 [**Training VLAs from Scratch**](#training-vlas-from-scratch) | [**Evaluating OpenVLA**](#evaluating-openvla) | [**Project Website**](https://openvla.github.io/)
 
 
 <hr style="border: 2px solid gray;"></hr>
-
-## Latest Updates
-- [2024-10-15] Added a [VLA Performance Troubleshooting](#vla-performance-troubleshooting) section to the README with best practices for debugging poor VLA performance after fine-tuning.
-- [2024-09-04] Added LIBERO simulation benchmark fine-tuning experiments to paper (see v2 on [arXiv](https://arxiv.org/abs/2406.09246));
-  added instructions for reproducing OpenVLA results in [LIBERO Simulation Benchmark Evaluations](#libero-simulation-benchmark-evaluations) section
-- [2024-08-14] Added new section, [Evaluating OpenVLA](#evaluating-openvla), with instructions for running BridgeData V2 WidowX robot evals
-- [2024-07-08] Added new sections: [Fine-Tuning OpenVLA via LoRA](#fine-tuning-openvla-via-lora), [Fully Fine-Tuning OpenVLA](#fully-fine-tuning-openvla)
-- [2024-06-13] Initial release
-
-<hr style="border: 2px solid gray;"></hr>
-
-A simple and scalable codebase for training and fine-tuning vision-language-action models (VLAs) for generalist robotic 
-manipulation:
-
-- **Different Dataset Mixtures**: We natively support arbitrary datasets in RLDS format, including arbitrary mixtures of
-  data from the [Open X-Embodiment Dataset](https://robotics-transformer-x.github.io/).
-- **Easy Scaling**: Powered by PyTorch FSDP and Flash-Attention, we can quickly and efficiently train models from 1B - 
-  34B parameters, with easily adaptable model architectures.
-- **Native Fine-Tuning Support**: Built-in support (with examples) for various forms of fine-tuning (full, 
-  partial, LoRA).
 
 Built on top of [Prismatic VLMs](https://github.com/TRI-ML/prismatic-vlms).
 
@@ -42,37 +40,8 @@ HuggingFace `transformers` AutoClasses, with minimal dependencies.
 For example, to load `openvla-7b` for zero-shot instruction following in the
 [BridgeData V2 environments](https://rail-berkeley.github.io/bridgedata/) with a WidowX robot:
 
-```python
-# Install minimal dependencies (`torch`, `transformers`, `timm`, `tokenizers`, ...)
-# > pip install -r https://raw.githubusercontent.com/openvla/openvla/main/requirements-min.txt
-from transformers import AutoModelForVision2Seq, AutoProcessor
-from PIL import Image
 
-import torch
-
-# Load Processor & VLA
-processor = AutoProcessor.from_pretrained("openvla/openvla-7b", trust_remote_code=True)
-vla = AutoModelForVision2Seq.from_pretrained(
-    "openvla/openvla-7b", 
-    attn_implementation="flash_attention_2",  # [Optional] Requires `flash_attn`
-    torch_dtype=torch.bfloat16, 
-    low_cpu_mem_usage=True, 
-    trust_remote_code=True
-).to("cuda:0")
-
-# Grab image input & format prompt
-image: Image.Image = get_from_camera(...)
-prompt = "In: What action should the robot take to {<INSTRUCTION>}?\nOut:"
-
-# Predict Action (7-DoF; un-normalize for BridgeData V2)
-inputs = processor(prompt, image).to("cuda:0", dtype=torch.bfloat16)
-action = vla.predict_action(**inputs, unnorm_key="bridge_orig", do_sample=False)
-
-# Execute...
-robot.act(action, ...)
-```
-
-We also provide an [example script for fine-tuning OpenVLA models for new tasks and 
+ [example script for fine-tuning OpenVLA models for new tasks and 
 embodiments](./vla-scripts/finetune.py); this script supports different fine-tuning modes -- including (quantized) 
 low-rank adaptation (LoRA) supported by [HuggingFace's PEFT library](https://huggingface.co/docs/peft/en/index). 
 
