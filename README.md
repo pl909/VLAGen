@@ -54,7 +54,7 @@ This project uses bash scripts for data generation and evaluation located in the
 * **PEFT (Hugging Face):** Library for parameter-efficient fine-tuning, enabling LoRA (Low-Rank Adaptation).
 * **BitsAndBytes:** Enables 4-bit quantization of the OpenVLA model for memory-efficient fine-tuning.
 * **SIMPLER:**  A simulation benchmark used for generating and evaluating robotic manipulation policies.
-* **OpenVLA:**  A pre-trained vision-language-action model.
+* **OpenVLA:**  A pre-trained vision-language-action model. https://openvla.github.io/
 * **GPT-4V:** A vision-language model used to score the generated trajectories.
 * **Draccus:** A Python library for configuration management and structured data handling.
 * **Make:** Used for streamlining common development tasks.
