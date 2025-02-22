@@ -2,7 +2,7 @@
 
 This repository contains the code for VLAGen, a simulation-based data generation and filtering pipeline designed to autonomously generalize Vision-Language-Action (VLA) models to new objects.
 
-VLAGen addresses the limitations of existing VLA models by generating diverse, high-quality training trajectories in simulation (by using high temperature during inference). Then, the trajectories are evaluated with a vision-language model (GPT-4V) and by filtering out low-action trajectories to mitigate "catastrophic idling."  The generated data is then used to fine-tune or preference-optimize OpenVLA.
+VLAGen addresses the limitations of existing VLA models by generating diverse, high-quality training trajectories all in simulation (by using high temperature during inference). Then, the trajectories are evaluated with a vision-language model (GPT-4V) and by filtering out low-action trajectories to mitigate "catastrophic idling."  The generated data is then used to fine-tune or preference-optimize OpenVLA.
 
 This repository is a fork of OpenVLA. This project incorporates code from SimplerEnv-OpenVLA, available at:
 https://github.com/DelinQu/SimplerEnv-OpenVLA
