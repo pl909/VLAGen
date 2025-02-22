@@ -17,6 +17,7 @@ Licensed under the MIT License (c) 2024 simpler-env.
 
 ![alt text](https://github.com/pl909/VLAGen/blob/main/labeldiagram.png?raw=true)
 
+Above, the data pipeline is depicted generating and scoring trajectories for picking a Fanta can (out-of-distribution) with distractors.
 
 * **Magnitude-Based Filtering:** Filters out low-action trajectories to mitigate catastrophic idling behavior.
 * **Fine-tuning and Preference Optimization:** Supports both fine-tuning and preference optimization (using KTO) of OpenVLA using the generated data. KTO for reference: https://arxiv.org/abs/2402.01306 
