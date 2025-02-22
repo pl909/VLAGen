@@ -76,5 +76,3 @@ Contributions are welcome!  Please open an issue or submit a pull request.
 MIT License.  See the `LICENSE` file for details.
 
 
-
-*README.md was made with [Etchr](https://etchr.dev)*
