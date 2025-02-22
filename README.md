@@ -6,10 +6,10 @@ This repository is a fork of OpenVLA and contains code directly from https://git
 
 ## Features
 
-* **Automated Data Generation:** Generates diverse robotic manipulation trajectories in simulation using OpenVLA.
+* **Automated Data Generation:** Generates diverse robotic manipulation trajectories in SIMPLER/SAPIEN simulation using OpenVLA.
 * **GPT-4V Trajectory Scoring:** Employs GPT-4V to score generated trajectories based on their success in completing the task.
 * **Magnitude-Based Filtering:** Filters out low-action trajectories to mitigate catastrophic idling behavior.
-* **Fine-tuning and Preference Optimization:** Supports both fine-tuning and preference optimization (using KTO) of OpenVLA using the generated data.
+* **Fine-tuning and Preference Optimization:** Supports both fine-tuning and preference optimization (using KTO) of OpenVLA using the generated data. KTO for reference: https://arxiv.org/abs/2402.01306 
 * **SIMPLER Environment Integration:** Leverages the SIMPLER benchmark for real-to-sim evaluation and data generation.
 * **Scalable and Efficient:** Provides a scalable and efficient solution for training robotic models without relying on extensive human-collected datasets.
 
