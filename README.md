@@ -1,6 +1,8 @@
 # VLAGen: Automated Data Collection for Generalizing Robotic Policies
 
-This repository contains the code for VLAGen, a simulation-based data generation and filtering pipeline designed to improve the generalization capabilities of Vision-Language-Action (VLA) models for robotic manipulation.  VLAGen addresses the limitations of existing VLA models by generating diverse, high-quality training trajectories in simulation (by using high temperature during inference). Then, the trajectories are evaluated with a vision-language model (GPT-4V) and by filtering out low-action trajectories to mitigate "catastrophic idling."  The generated data is then used to fine-tune or preference-optimize OpenVLA.
+This repository contains the code for VLAGen, a simulation-based data generation and filtering pipeline designed to improve the generalization of Vision-Language-Action (VLA) models.  
+
+VLAGen addresses the limitations of existing VLA models by generating diverse, high-quality training trajectories in simulation (by using high temperature during inference). Then, the trajectories are evaluated with a vision-language model (GPT-4V) and by filtering out low-action trajectories to mitigate "catastrophic idling."  The generated data is then used to fine-tune or preference-optimize OpenVLA.
 
 This repository is a fork of OpenVLA. This project incorporates code from SimplerEnv-OpenVLA, available at:
 https://github.com/DelinQu/SimplerEnv-OpenVLA
