@@ -12,7 +12,7 @@ Licensed under the MIT License (c) 2024 simpler-env.
 
 ## Features
 
-* **Automated Data Generation:** Generates robotic manipulation trajectories in SIMPLER/SAPIEN simulation using OpenVLA (model deployed with high temperature settings to generate diverse trajectories.
+* **Automated Data Generation:** Generates robotic manipulation trajectories in SIMPLER/SAPIEN simulation using OpenVLA (model deployed with high temperature settings to generate diverse trajectories).
 * **GPT-4V Trajectory Scoring:** Employs GPT-4V to automatically score trajectories based on their success in completing the task.
 
 ![alt text](https://github.com/pl909/VLAGen/blob/main/labeldiagram.png?raw=true)
